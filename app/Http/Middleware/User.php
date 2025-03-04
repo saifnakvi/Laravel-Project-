@@ -20,5 +20,5 @@ class User
             return $next($request);
         }
         return redirect('/login')->with('error', 'User must logged in first');;
-    }      
+    } 
 }

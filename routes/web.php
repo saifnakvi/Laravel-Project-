@@ -12,6 +12,7 @@ use App\Http\Controllers\client;
 use App\Http\Middleware\User;
 use Illuminate\Support\Facades\Route;
 use App\Artisan;
+use App\Http\Controllers\ExportData;
 
 // Route::get('/', function () {
 //     return view('homeindex.index'); 
@@ -106,3 +107,7 @@ Route::get('/clientreview',[client::class, 'ClientCreate'])->middleware('is_user
 Route::post('/clientcreated',[client::class, 'CreateClient'])->middleware('is_user')->name('clientcreated');
 Route::get('/clientreview',[client::class, 'DeleteClient'])->middleware('is_user')->name('deleteclient');
 Route::get('/clientreview/{id}',[client::class, 'Clntdlt'])->middleware('is_user')->name('Clntdlt');
+
+// export route
+Route::post('slider/data-pdfview',[ExportData::class,'viewPDF'])->name('Sliderdataview');
+Route::post('slider/data-export',[ExportData::class,'ExportSlider'])->name('SliderExport');

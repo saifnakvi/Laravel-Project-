@@ -24,8 +24,8 @@ height: 60px;
   @extends('frontend.master')
   @section('content')
     <div class="container">
-      <div class="col-md-6 mt-5">
-            <h1>Slider</h1>
+      <div class="col-md-6 mt-5">   
+        <h1>Slider</h1>
          <form method="POST" action="{{url('/create')}}" enctype="multipart/form-data">
           @csrf
            <div class="form-group">
@@ -43,7 +43,18 @@ height: 60px;
            </div>
            <hr>
            <button type="submit" class="btn btn-primary">Submit</button>
+           <form action="{{route('SliderExport')}}" method="POST" target="__blank">
+            @csrf
+            <button class="btn btn-primary" value="" name="export"> View Data </button>
+          </form>
          </form>
+      </div>
+         {{-- <div class="mt-2">
+          <form action="{{route('SliderExport')}}" method="POST" target="__blank">
+            @csrf
+            <button class="btn btn-primary" value="" name="export"> Export Data </button>
+          </form>
+        </div>  --}}
           @if (session()->has('success'))
           <div class="alert alert-success mt-5">
           {{session()->get('success')}}
@@ -51,7 +62,6 @@ height: 60px;
          </div>
      <div class="container mt-5">
       <table class="table table-bordered" id="table">
- 
        <tr>
          <th>ID</th>
          <th>Heading</th>
@@ -75,5 +85,5 @@ height: 60px;
        @endforeach
        @endif
       </table>
-     </div>
+    </div>
      @endsection
